@@ -1,0 +1,59 @@
+---
+title: "Sexy Graph"
+author: "Sanaka Dash"
+format: html
+execute:
+  echo: false
+---
+##% of people with Bachelors Degrees in LA
+```{r}
+#| label: setup
+#| message: false
+library(tidycensus)
+library(tidyr)
+library(ggplot2)
+library(leaflet)
+library(sf)
+library(dplyr)
+census_api_key("9a69c2dd66dcb6f7d2c81fc5b70f7aa0ab8f6bbd")
+```
+
+```{r, results='hide'}
+#| echo: false
+#| message: false
+la_bachelor_data <- get_acs(
+  geography = "tract",
+  state = "06",  # California
+  county = "Los Angeles",
+  variables = "B15003_022E",  # Estimate of people with bachelor's degree
+  year = 2021,  # Specify the year, e.g., 2021
+  geometry = TRUE  # Include geometry for mapping
+  
+)
+la_bachelor_data <- la_bachelor_data %>%
+  st_as_sf(wkt = "geometry")
+```
+
+```{r}
+#| warning: false
+
+leaflet(data = la_bachelor_data) %>%
+  addTiles() %>%
+  addPolygons(
+    fillColor = ~colorQuantile("YlOrRd", estimate)(estimate),
+    fillOpacity = 0.7,
+    color = "#BDBDC3",
+    weight = 1,
+    popup = ~paste("GEOID:", GEOID, "<br>",
+                   "Name:", NAME, "<br>",
+                   "Estimate:", estimate, "<br>",
+                   "MOE:", moe)
+  ) %>%
+  addLegend(
+    pal = colorQuantile("YlOrRd", la_bachelor_data$estimate),
+    values = la_bachelor_data$estimate,
+    position = "bottomright",
+    title = "Bachelor's Degree Estimate"
+  )
+```
+

@@ -1,0 +1,4 @@
+- source: project
+  quarto-pub:
+    - id: b1d8c78b-3c41-4c05-bc0a-623f889d096f
+      url: 'https://sanakadash.quarto.pub/sexy-website'

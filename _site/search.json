@@ -1,0 +1,30 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Home",
+    "section": "",
+    "text": "This is my sexy Quarto website.\nTo learn more about Quarto websites, visit https://quarto.org/docs/websites."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "This sexy site was created by the most intelligent person of all time, Sanaka Dash, who is just so good at making sexy websites."
+  },
+  {
+    "objectID": "about.html#about-this-site",
+    "href": "about.html#about-this-site",
+    "title": "About",
+    "section": "",
+    "text": "This sexy site was created by the most intelligent person of all time, Sanaka Dash, who is just so good at making sexy websites."
+  },
+  {
+    "objectID": "graph.html",
+    "href": "graph.html",
+    "title": "Sexy Graph",
+    "section": "",
+    "text": "##% of people with Bachelors Degrees in LA"
+  }
+]
